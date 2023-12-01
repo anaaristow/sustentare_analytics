@@ -170,5 +170,40 @@ SELECT
 FROM
     unimestre.view_matriculas
 LIMIT 500;
+-- This query calculates the minimum formatted date for each cd_pessoa
+-- by first creating a common table expression (CTE) with formatted dates,
+-- and then joining it back with the original table.
+WITH FormattedDates AS (
+    SELECT
+        cd_pessoa,
+        cd_turma,
+        SUBSTRING(cd_turma, LOCATE('20', cd_turma), 4) AS ano,
+        SUBSTRING(cd_turma, LOCATE('20', cd_turma) + 4, 1) AS semestre,
+        CASE
+            WHEN SUBSTRING(cd_turma, LOCATE('20', cd_turma) + 4, 1) = 'A' THEN DATE_FORMAT(CONCAT(SUBSTRING(cd_turma, LOCATE('20', cd_turma), 4), '-02-01'), '%Y-%m-%d')
+            WHEN SUBSTRING(cd_turma, LOCATE('20', cd_turma) + 4, 1) = 'B' THEN DATE_FORMAT(CONCAT(SUBSTRING(cd_turma, LOCATE('20', cd_turma), 4), '-07-01'), '%Y-%m-%d')
+            ELSE NULL -- Handle other cases if needed
+        END AS formatted_date
+    FROM
+        unimestre.view_matriculas
+)
+SELECT
+    m.cd_pessoa,
+    m.cd_turma,
+    m.ano,
+    m.semestre,
+    f.min_formatted_date
+FROM
+    unimestre.view_matriculas m
+JOIN
+    (
+        SELECT
+            cd_pessoa,
+            MIN(formatted_date) AS min_formatted_date
+        FROM
+            FormattedDates
+        GROUP BY
+            cd_pessoa
+    ) f ON m.cd_pessoa = f.cd_pessoa
+LIMIT 500;
 
- 
