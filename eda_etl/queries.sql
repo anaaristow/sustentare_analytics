@@ -1,7 +1,8 @@
 # Checking the databases
 select * from unimestre.view_matriculas limit 1; #All matriculas
+select count(*) from unimestre_moodle.view_moodle_pessoas; #Info student
 select * from unimestre_moodle.view_moodle_pessoas limit 1; #Info student
-select * from unimestre_moodle.view_moodle_pessoas limit 1; #Info student - with data_nascimento
+select count(*) from unimestre_moodle.view_moodle_pessoas limit 1; #Info student - with data_nascimento
 select * from unimestre_wp.view_turmas limit 1;
 select * from unimestre.pessoas  where cd_pessoa = "117607";
 select count(*) from unimestre.pessoas;
@@ -170,40 +171,54 @@ SELECT
 FROM
     unimestre.view_matriculas
 LIMIT 500;
--- This query calculates the minimum formatted date for each cd_pessoa
--- by first creating a common table expression (CTE) with formatted dates,
--- and then joining it back with the original table.
-WITH FormattedDates AS (
-    SELECT
-        cd_pessoa,
-        cd_turma,
-        SUBSTRING(cd_turma, LOCATE('20', cd_turma), 4) AS ano,
-        SUBSTRING(cd_turma, LOCATE('20', cd_turma) + 4, 1) AS semestre,
-        CASE
-            WHEN SUBSTRING(cd_turma, LOCATE('20', cd_turma) + 4, 1) = 'A' THEN DATE_FORMAT(CONCAT(SUBSTRING(cd_turma, LOCATE('20', cd_turma), 4), '-02-01'), '%Y-%m-%d')
-            WHEN SUBSTRING(cd_turma, LOCATE('20', cd_turma) + 4, 1) = 'B' THEN DATE_FORMAT(CONCAT(SUBSTRING(cd_turma, LOCATE('20', cd_turma), 4), '-07-01'), '%Y-%m-%d')
-            ELSE NULL -- Handle other cases if needed
-        END AS formatted_date
-    FROM
-        unimestre.view_matriculas
-)
+
+# Creating a query to export with the info of first day class (min date) based on the cd_turma
 SELECT
     m.cd_pessoa,
     m.cd_turma,
-    m.ano,
-    m.semestre,
-    f.min_formatted_date
+    SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma), 4) AS ano,
+    SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma) + 4, 1) AS semestre,
+    MIN(
+        CASE
+            WHEN SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma) + 4, 1) = 'A' THEN DATE_FORMAT(CONCAT(SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma), 4), '-02-01'), '%Y-%m-%d')
+            WHEN SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma) + 4, 1) = 'B' THEN DATE_FORMAT(CONCAT(SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma), 4), '-07-01'), '%Y-%m-%d')
+            ELSE NULL
+        END
+    ) AS min_date
 FROM
-    unimestre.view_matriculas m
-JOIN
-    (
-        SELECT
-            cd_pessoa,
-            MIN(formatted_date) AS min_formatted_date
-        FROM
-            FormattedDates
-        GROUP BY
-            cd_pessoa
-    ) f ON m.cd_pessoa = f.cd_pessoa
-LIMIT 500;
+    unimestre.view_matriculas AS m
+GROUP BY
+    m.cd_pessoa, m.cd_turma, ano, semestre
+LIMIT 100000;
 
+# Counting the number of unique cd_pessoa with NULL in min_formatted_date.
+SELECT
+    COUNT(CASE WHEN min_date IS NULL THEN 1 ELSE NULL END) AS null_min_date_count
+FROM (
+    SELECT
+        m.cd_pessoa,
+        MIN(
+            CASE
+                WHEN SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma) + 4, 1) = 'A' THEN DATE_FORMAT(CONCAT(SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma), 4), '-02-01'), '%Y-%m-%d')
+                WHEN SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma) + 4, 1) = 'B' THEN DATE_FORMAT(CONCAT(SUBSTRING(m.cd_turma, LOCATE('20', m.cd_turma), 4), '-07-01'), '%Y-%m-%d')
+                ELSE NULL
+            END
+        ) AS min_date
+    FROM
+        unimestre.view_matriculas AS m
+    GROUP BY
+        m.cd_pessoa
+) AS subquery; #3094
+-- ^this query was exported 
+
+# Trying to find the info of the first contact of the student with the school in another table
+SELECT
+    cd_pessoa, dt_cadastro 
+FROM
+    unimestre.pessoas
+GROUP BY cd_pessoa
+LIMIT 100000; 
+
+# Extractig the name of the students
+SELECT cd_pessoa, nm_pessoa, ds_primeiro_nome, ds_email 
+    FROM unimestre_moodle.view_moodle_pessoas LIMIT 100000; 
