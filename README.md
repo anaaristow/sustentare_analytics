@@ -1,6 +1,6 @@
 # Analysis of the funnel tunel for Sustenare Bussines School
 
-foto logo - texto
+![foto logo - texto](image/logo_sustentare.png)
 
 ## School
 The Sustentare Business School is the higher education institution in the North region of Santa Catarina - Brazil that offers the largest number of specialization and MBA options. There are more than 60 postgraduate courses (Lato Sensu) in the areas of Management, Innovation, Finance, Marketing, Engineering, Information Technology, Operations, and Design. The institution also provides extension courses, training, in-company courses, and corporate programs.
@@ -31,7 +31,7 @@ The exploration of the sales funnel involved navigating through two distinct dat
 
 The database contains information on leads, some of whom are students, though the platform doesn't explicitly categorize them as such. Notably, some fields lacked a consistent pattern, requiring careful organization and understanding to extract meaningful insights. This was particularly evident in cases where multiple fields represented the same information, adding a layer of complexity to the data analysis process.
 
-gif python
+<video src="image/columns_rd_station.mp4" controls title="gif python"></video>
 
 #### Unimestre SQL Database (Student Information):
 
@@ -39,7 +39,7 @@ gif python
 
 Despite its richness in student details, the SQL database presented organizational challenges, featuring over 100 tables.
 
-gif sql
+![Alt text](<image/gif sql.gif>)
 
 # Steps
 
@@ -47,8 +47,6 @@ gif sql
 2. Transforming
 3. Machine Learning
 4. Analyzing and Visualization
-
-
 
 ## Cleanning 
 
@@ -58,11 +56,10 @@ Importing data from RD Station CSV and extracting student information from Unime
 
 The primary goal was to achieve clean and well-organized datasets, instrumental for subsequent analysis. Through extraction, searching, and null value filling, the following reductions were achieved:
 
-- **City** by 843
-- **Job Title** by 5.312
-- **Field** by 3.409
-- **Course of Interest** by 1.313
-- **First log student** by 9.012
+- **First log student** by 75%
+- **Job Title** by 13%
+- **Course of Interest** by 8%
+- **City** by 6%  
 
 These reductions signify a substantial improvement in data quality, setting the stage for seamless dataset merging and insightful analysis.
 
@@ -82,10 +79,43 @@ In this phase, the dataset underwent several manipulations to enhance structure 
 
     Implementation of machine learning algorithms to discern the most influential features predicting whether a visitor transitions to becoming a student.
 
+### Model Choice: XGBoost
 
+#### Handling of Categorical Data & Treatment of Null Values
+
+The model's exceptional proficiency in managing both categorical features and null values positions it as the optimal choice for the dataset analysis.
+
+#### Model Performance
+- **Accuracy:** 97.91%
+- **Kappa Score:** 0.0894
+
+![Alt text](image.png)
 ## Analysis & Visualization
 
-    Leveraging insights gained from machine learning and additional information obtained during the transforming phase, a comprehensive analysis was conducted. This involved statistical analyses, identification of trends, and evaluation of data patterns. To enhance interpretability, graphics were plotted on Tableau, providing a visual narrative that allowed for a more accessible and insightful exploration of the data.
+    Leveraging insights gained from machine learning and additional information obtained during the transforming phase, a comprehensive analysis was conducted.
+    
+To enhance interpretability, graphics were plotted on Tableau, providing a visual narrative that allowed for a more accessible and insightful exploration of the data.
 
+**Effective Actions:**
+![Alt text](image/effective_actions.png)
+
+**Students’ Profile:**
+![!\[Alt text\](image.png)](image/profile_student.png)
 
 # Conclusion
+
+After an in-depth exploration of the sales funnel and a thorough understanding of strategies to boost conversion rates, the analysis has yielded valuable insights.
+
+### Effective Actions:
+    After the a detailed investigation on the most influential features done with our machine learning model, a prominent factor influencing the decision to become a student is how the person discover the school.
+
+The visualization in Tableau further reinforces this, revealing that recommendations from **Ex-Students** result in the **highest conversion rates.** An actionable recommendation is to incentivize and reward students who refer friends and family, fostering a culture of positive word-of-mouth marketing.
+
+Additionally, our analysis indicates that master classes, while engaging, show minimal impact on conversion. **Redirecting efforts** towards more effective channels, such as **webinars**, could enhance overall conversion rates.
+
+### Students’ Profile:
+    In crafting the profile persona, we identified a significant concentration in the **Human Resources sector.** This finding prompts strategic considerations for the school, such as **expanding** course offerings tailored to the needs of this specific sector. Simultaneously, evaluating the performance of courses in other areas may reveal insights into factors impacting their enrollment rates.
+
+**Analyzing demographic** data revealed that the median age of the students are 34. Understanding where students predominantly work, where they pursued their university education, and their age distribution provides a foundation for targeted marketing campaigns. 
+
+In conclusion, this project equips Sustentare Business School with actionable strategies to enhance its sales funnel and drive higher conversion rates. 
