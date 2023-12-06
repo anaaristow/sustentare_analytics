@@ -31,7 +31,7 @@ Derived from a CSV exported from RD Station, the marketing automation platform.
 
 The database contains information on leads, some of whom are students, though the platform doesn't explicitly categorize them as such. Notably, some fields lacked a consistent pattern, requiring careful organization and understanding to extract meaningful insights. This was particularly evident in cases where multiple fields represented the same information, adding a layer of complexity to the data analysis process.
 
-<video src="image/columns_rd_station.mp4" controls title="gif python"></video>
+![<video src="image/columns_rd_station.mp4" controls title="gif python"></video>](image/gif_python.gif)
 
 #### Unimestre SQL Database (Student Information):
 
