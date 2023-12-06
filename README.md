@@ -12,13 +12,13 @@ The goal of this project is to gain a comprehensive understanding of the sales f
 
 #### **1. Profile Persona of Sustentare Students:**
     
-    To create a detailed profile persona that encapsulates the characteristics, preferences, and behaviors of Sustentare Business School's students.
+To create a detailed profile persona that encapsulates the characteristics, preferences, and behaviors of Sustentare Business School's students.
 
 This persona serves as a guiding light for crafting tailored marketing strategies that resonate with the target audience, ensuring our communication is not only relevant but also impactful.
 
 #### 2. **Effective Actions for Conversion:**
 
-    To pinpoint and implement effective actions that facilitate the transition of leads (visitors) into enrolled students.
+To pinpoint and implement effective actions that facilitate the transition of leads (visitors) into enrolled students.
 
 These identified actions are grounded in data analysis and are designed to optimize the sales funnel, creating a more seamless and compelling journey from initial interest to successful enrollment.
 
@@ -27,7 +27,7 @@ The exploration of the sales funnel involved navigating through two distinct dat
 
 #### RD Station Database (Marketing Leads):
 
-    Derived from a CSV exported from RD Station, the marketing automation platform.
+Derived from a CSV exported from RD Station, the marketing automation platform.
 
 The database contains information on leads, some of whom are students, though the platform doesn't explicitly categorize them as such. Notably, some fields lacked a consistent pattern, requiring careful organization and understanding to extract meaningful insights. This was particularly evident in cases where multiple fields represented the same information, adding a layer of complexity to the data analysis process.
 
@@ -35,7 +35,7 @@ The database contains information on leads, some of whom are students, though th
 
 #### Unimestre SQL Database (Student Information):
 
-    Extracted from a SQL database based on the Unimestre platform, the school's CRM system.
+Extracted from a SQL database based on the Unimestre platform, the school's CRM system.
 
 Despite its richness in student details, the SQL database presented organizational challenges, featuring over 100 tables.
 
@@ -50,7 +50,7 @@ Despite its richness in student details, the SQL database presented organization
 
 ## Cleanning 
 
-    Addressing inconsistencies and improving the quality of the data. Correcting errors, handling missing values, and ensuring uniformity.
+Addressing inconsistencies and improving the quality of the data. Correcting errors, handling missing values, and ensuring uniformity.
 
 Importing data from RD Station CSV and extracting student information from Unimestre's SQL database.
 
@@ -65,7 +65,7 @@ These reductions signify a substantial improvement in data quality, setting the 
 
 ## Transformating
 
-    Preparing the data for analysis and machine learning. Restructuring, combining, and enhancing datasets for better compatibility.
+Preparing the data for analysis and machine learning. Restructuring, combining, and enhancing datasets for better compatibility.
 
 In this phase, the dataset underwent several manipulations to enhance structure and utility.
 
@@ -77,7 +77,7 @@ In this phase, the dataset underwent several manipulations to enhance structure 
 
 ## Machine Learning 
 
-    Implementation of machine learning algorithms to discern the most influential features predicting whether a visitor transitions to becoming a student.
+Implementation of machine learning algorithms to discern the most influential features predicting whether a visitor transitions to becoming a student.
 
 ### Model Choice: XGBoost
 
@@ -89,10 +89,12 @@ The model's exceptional proficiency in managing both categorical features and nu
 - **Accuracy:** 97.91%
 - **Kappa Score:** 0.0894
 
-![Alt text](image.png)
+
+![Alt text](image/model_features.png)
+
 ## Analysis & Visualization
 
-    Leveraging insights gained from machine learning and additional information obtained during the transforming phase, a comprehensive analysis was conducted.
+Leveraging insights gained from machine learning and additional information obtained during the transforming phase, a comprehensive analysis was conducted.
     
 To enhance interpretability, graphics were plotted on Tableau, providing a visual narrative that allowed for a more accessible and insightful exploration of the data.
 
@@ -114,7 +116,7 @@ The visualization in Tableau further reinforces this, revealing that recommendat
 Additionally, our analysis indicates that master classes, while engaging, show minimal impact on conversion. **Redirecting efforts** towards more effective channels, such as **webinars**, could enhance overall conversion rates.
 
 ### Students’ Profile:
-    In crafting the profile persona, we identified a significant concentration in the **Human Resources sector.** This finding prompts strategic considerations for the school, such as **expanding** course offerings tailored to the needs of this specific sector. Simultaneously, evaluating the performance of courses in other areas may reveal insights into factors impacting their enrollment rates.
+In crafting the profile persona, we identified a significant concentration in the **Human Resources sector.** This finding prompts strategic considerations for the school, such as **expanding** course offerings tailored to the needs of this specific sector. Simultaneously, evaluating the performance of courses in other areas may reveal insights into factors impacting their enrollment rates.
 
 **Analyzing demographic** data revealed that the median age of the students are 34. Understanding where students predominantly work, where they pursued their university education, and their age distribution provides a foundation for targeted marketing campaigns. 
 
