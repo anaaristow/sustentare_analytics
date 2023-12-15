@@ -121,3 +121,8 @@ In crafting the profile persona, we identified a significant concentration in th
 **Analyzing demographic** data revealed that the median age of the students are 34. Understanding where students predominantly work, where they pursued their university education, and their age distribution provides a foundation for targeted marketing campaigns. 
 
 In conclusion, this project equips Sustentare Business School with actionable strategies to enhance its sales funnel and drive higher conversion rates. 
+
+# Links
+[Tableau Dashboard](https://public.tableau.com/app/profile/ana.cidral/viz/SustentareAnalysis/Story1?publish=yes)
+
+[Apresentation](https://www.canva.com/design/DAF16QrcUyw/x9ZvktzEbKfIVQQvddZjSQ/edit?utm_content=DAF16QrcUyw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
