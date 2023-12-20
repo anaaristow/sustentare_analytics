@@ -1,11 +1,13 @@
 import pandas as pd
 import numpy as np
+import os
 import mysql.connector
 from datetime import datetime
 import re
 import src.extraction as ext
 import src.transformation as tran
-
+import dotenv as env
+env.load_dotenv()
 
 # extraction.py
 #Info Leads
@@ -14,10 +16,10 @@ rd_station_profile = ext.process_rd_station_profile(rd_station)
 
 # Database connection details
 db_config = {
-    'user': 'um_acesso_bi',
-    'password': 'umAcessoBiV6gGGcJS1#@a6544!11',
-    'host': '186.250.185.72',
-    'database': 'unimestre'
+    'user': os.getenv('user'),
+    'password': os.getenv('password'),
+    'host': os.getenv('host'),
+    'database': os.getenv('database')
 }
 db_connection = ext.connect_to_database(db_config)
 
