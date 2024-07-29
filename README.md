@@ -123,6 +123,6 @@ In crafting the profile persona, we identified a significant concentration in th
 In conclusion, this project equips Sustentare Business School with actionable strategies to enhance its sales funnel and drive higher conversion rates. 
 
 # Links
-[Tableau Dashboard](https://public.tableau.com/app/profile/ana.cidral/viz/SustentareAnalysis/Story1?publish=yes)
+[Tableau Dashboard](https://public.tableau.com/app/profile/ana.cidral/viz/SustentareAnalysis/storypresentation)
 
 [Apresentation](https://www.canva.com/design/DAF16QrcUyw/x9ZvktzEbKfIVQQvddZjSQ/edit?utm_content=DAF16QrcUyw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
