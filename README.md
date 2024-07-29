@@ -90,7 +90,7 @@ The model's exceptional proficiency in managing both categorical features and nu
 - **Kappa Score:** 0.0894
 
 
-![Alt text](image/model_features.png)
+![Alt text](image/image.png)
 
 ## Analysis & Visualization
 
